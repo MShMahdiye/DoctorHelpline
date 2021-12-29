@@ -37,9 +37,6 @@ const Drlist = ({ showModal }) => {
           console.log("obj source clinic:", obj[i]._source.clinics[0]);
           console.log("obj source clinic long", obj[i]._source.clinics[0].longtitude);
           const geo = { lat, lng }
-          // const geo = [lat, lng]
-
-
           console.log("im geo : ", geo);
           let id1 = item._id
           return (
