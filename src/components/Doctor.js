@@ -3,11 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { Rating } from 'react-simple-star-rating'
 // import Card from "./Card";
-// import './Robot.css';
+
 
 function Doctor() {
 
-  var robots = [];
   const { id } = useParams();
   const [Doctor, setDoctor] = useState([]);
   const [rating, setRating] = useState(3);
@@ -31,9 +30,8 @@ function Doctor() {
 console.log("==========");
   console.log("RATE:",Doctor.rate);
   return (
-    <div className="relative">
-      {/* <h3>id : {id}</h3> */}
-      <div className='flex flex-wrap justify-center text-center items-center bg-white font-mono w-150'>
+    <div className="relative font-Jomhuria">
+      <div className='flex flex-wrap justify-center text-center items-center bg-white font-Jomhuria w-150'>
         <img
           src={
             "https://www.tebinja.com/img/uploads/doctors/thumbnails/" +
@@ -45,7 +43,7 @@ console.log("==========");
       <div className='flex items-center text-center justify-center'>
         <Rating onClick={handleRating} ratingValue={(Doctor.rate)*20} readonly={true}/* Available Props */ />
       </div>
-      <h3 className='text-3xl mb-2 text-center font-Jomhuria'>{Doctor.fname} {Doctor.lname}</h3>
+      <h3 className='text-3xl mb-2 text-center font-Jomhuria border-b-2 border-blue shadow'>{Doctor.fname} {Doctor.lname}</h3>
       <h3 className='text-2xl mb-2 text-center'>{Doctor.address}</h3>
       <h3 className='text-2xl mb-2 text-center'>کد پزشکی : {Doctor.pezeshkCode}</h3>
       <h3 className='text-2xl mb-4 text-center'>{Doctor.about}</h3>

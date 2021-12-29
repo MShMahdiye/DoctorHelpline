@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Link, useParams, Route, Routes } from "react-router-dom";
-// import "./Drlist.css";
+import { Link, useParams } from "react-router-dom";
 
 const Drlist = ({ showModal }) => {
   const { id } = useParams();
@@ -27,7 +26,7 @@ const Drlist = ({ showModal }) => {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="relative justify-center text-center items-center bg-blue-300  font-mono mt-2">
+      <div className="flex flex-wrap justify-center text-center items-center bg-blue-300 h-screen font-Jomhuria mt-2 w-800 bg-blue-300" id="ftydrf" style={{width:800,height:500, display: 'flex', flexWrap: 'wrap'}} >
         {items.map((item, i) => {
           const deepClone = obj => JSON.parse(JSON.stringify(obj))
           const obj = deepClone(items)
@@ -45,20 +44,24 @@ const Drlist = ({ showModal }) => {
           let id1 = item._id
           return (
 
-            <div className="flex flex-wrap text-center items-center w-500 h-200 border border-blue-500 shadow" onClick={() => { showModal({ id1 }); }}>
-              <div className="text-center items-center">
-                <div className="flex flex-wrap text-center items-center justify-center w-500">
-                  <div className="items-center justify-center flex flex-wrap"><img
-                    src={
-                      "https://www.tebinja.com/img/uploads/doctors/thumbnails/" +
-                      item._source.url
-                    }
-                    className="items-center justify-center" width={150} height={150}
-                  ></img>
+            <div 
+              className="flex flex-wrap text-center items-center w-1000 h-400 m-3" 
+              onClick={() => { showModal({ id1 }); }}
+            >
+              <div className="text-center items-center  rounded-lg shadow-lg backdrop-blur" style={{background: ''}}>
+                <div className="flex flex-wrap text-center items-center justify-center shadow-lg h-500 w-1000" style={{flexDirection: 'column',height:400}}>
+                  <div className="items-center justify-center flex m-6 mr-8 mt-10">
+                    <img
+                      src={
+                        "https://www.tebinja.com/img/uploads/doctors/thumbnails/" +
+                        item._source.url
+                      }
+                      className="items-center justify-center" width={150} height={150} margin={10}
+                    />
                   </div>
-                  <div className="name">{item._source.fname} {item._source.lname} </div>
-                  <div className="speciality">تخصص : {item._source.spUnis[0].specialty.name}</div>
-                  <Link className='p-4' to={`/doctors/${id1}`} key={id1}>Read more</Link>
+                  <div className="name m-6 inline-flex flex-wrap">{item._source.fname} {item._source.lname} </div>
+                  <div className="speciality mb-2 border-b-2 border-gray">تخصص : {item._source.spUnis[0].specialty.name}</div>
+                  <Link className='py-1 px-8  bg-blue-500 rounded-full shadow-lg text-blue-100' to={`/doctors/${id1}`} key={id1}>Read more</Link>
                 </div>
               </div>
             </div>
@@ -71,3 +74,10 @@ const Drlist = ({ showModal }) => {
 };
 
 export default Drlist;
+/* From https://css.glass 
+background: rgba(255, 255, 255, 0.09);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);*/
